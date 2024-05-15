@@ -1,7 +1,7 @@
 document.getElementById('dataForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    fetch('https://tu_backend_url/generate-pdf', {  // Cambia esto por la URL de tu backend
+    fetch('https://vueling.sharepoint.com/:b:/r/sites/FleetDpt/LOGISTICS/Logistica_externa/NOTOCS/NOTOC%20Plantilla.pdf?csf=1&web=1&e=mP9gyj',{
         method: 'POST',
         body: JSON.stringify(Object.fromEntries(formData)),
         headers: {
