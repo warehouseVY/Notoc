@@ -1,1 +1,21 @@
-
+document.getElementById('dataForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    fetch('https://tu_backend_url/generate-pdf', {  // Cambia esto por la URL de tu backend
+        method: 'POST',
+        body: JSON.stringify(Object.fromEntries(formData)),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.blob())
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'documento.pdf';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    });
+});
